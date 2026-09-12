@@ -222,7 +222,7 @@
     "assumptions": [
       {
         "assumption": "Missing markers = Not Yet Profiled",
-        "rationale": "58.7% zero-data rows with perfectly correlated co-missingness",
+        "rationale": "58.7% zero-behavioral-data rows with perfectly correlated co-missingness",
         "impact": "Prevents artificial data imputation bias"
       },
       {

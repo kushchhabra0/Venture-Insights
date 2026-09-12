@@ -88,20 +88,30 @@ The web dashboard is built using Vite, React 18, Recharts, and Lucide Icons with
 
 ```
 Venture-Insights/
-├── Clustering_Data.ftr                # Feather customer dataset (3,030 rows x 18 cols)
-├── customer_mapping.csv               # Customer cluster assignments & priority flags
-├── VentureInsights_Segmentation.ipynb # Main analytical data science Jupyter Notebook
-├── generate_dashboard_data.py         # Data pipeline script compiling public JSON payload
-├── segmentation_dashboard_data.json   # Processed JSON bundle for dashboard client
-├── package.json                       # Node dependencies & npm build scripts
-├── vite.config.js                     # Vite application configuration
-├── index.html                         # Entry HTML with Inter typography fonts
-├── public/                            # Static assets and dashboard JSON bundle
-├── src/                               # Web dashboard application source code
-│   ├── App.jsx                        # Main React application & layout workspace
-│   ├── index.css                      # Design system (Warm neutral tokens, enterprise tables)
+├── data/                                # Dataset directory
+│   ├── Clustering_Data.ftr              # Feather customer dataset (3,030 rows x 18 cols)
+│   └── customer_mapping.csv             # Customer cluster assignments & strategic flags
+├── notebooks/                           # Jupyter Data Science Notebooks
+│   └── VentureInsights_Segmentation.ipynb # Main segmentation analysis notebook
+├── docs/                                # Project documentation & management deliverables
+│   ├── METHODOLOGY_AND_WORKFLOW.md      # Full mathematical & statistical methodology
+│   ├── VentureCreed_Segmentation_Management.xlsx # Management workbook
+│   └── VentureInsights_Segmentation_Deck.pptx    # Executive presentation deck
+├── scripts/                             # Data processing & export pipeline scripts
+│   └── generate_dashboard_data.py       # Script compiling public JSON dashboard payload
+├── public/                              # Static public assets
+│   ├── .nojekyll                        # GitHub Pages Jekyll bypass
+│   └── segmentation_dashboard_data.json # Compiled JSON bundle for web client
+├── src/                                 # Web dashboard application source code
+│   ├── App.jsx                          # Main React application & layout workspace
+│   ├── index.css                        # Design system (Warm neutral tokens, enterprise tables)
 │   └── main.jsx                       # React DOM root entry point
-└── README.md                          # Project documentation
+├── .github/                             # GitHub Actions workflows
+│   └── workflows/deploy.yml             # Automated GitHub Pages CI/CD workflow
+├── package.json                         # Node dependencies & npm build scripts
+├── vite.config.js                       # Vite application configuration
+├── index.html                           # Entry HTML template
+└── README.md                            # Primary project documentation
 ```
 
 ---
@@ -113,9 +123,9 @@ Venture-Insights/
 - Node.js 18+ and npm
 
 ### 1. Data Pipeline Execution
-To re-generate the client dashboard payload from the source Feather and CSV files:
+To re-generate the client dashboard payload from the source data files:
 ```bash
-python generate_dashboard_data.py
+python scripts/generate_dashboard_data.py
 ```
 
 ### 2. Launch Development Web Dashboard

@@ -1,11 +1,21 @@
-import pandas as pd
+import os
 import json
 import numpy as np
+import pandas as pd
 
 def generate_data():
+    # Resolve relative paths from project root
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
+
+    ftr_path = os.path.join(root_dir, 'data', 'Clustering_Data.ftr')
+    csv_path = os.path.join(root_dir, 'data', 'customer_mapping.csv')
+    root_output = os.path.join(root_dir, 'segmentation_dashboard_data.json')
+    public_output = os.path.join(root_dir, 'public', 'segmentation_dashboard_data.json')
+
     # 1. Load data
-    df_ftr = pd.read_feather(r'e:\Data Science\Venture Insights\Clustering_Data.ftr')
-    df_map = pd.read_csv(r'e:\Data Science\Venture Insights\customer_mapping.csv')
+    df_ftr = pd.read_feather(ftr_path)
+    df_map = pd.read_csv(csv_path)
 
     # Merge dataframes on Customer_ID
     merged = pd.merge(df_ftr, df_map, on='Customer_ID', how='left')
@@ -196,7 +206,7 @@ def generate_data():
             {"pair": "Competitiveness_Flag vs Geography", "cramerV": 0.48, "action": "RETAINED IN MODEL (Explicit competitive defense strategy lever)"},
         ],
         "assumptions": [
-            {"assumption": "Missing markers = Not Yet Profiled", "rationale": "58.7% zero-data rows with perfectly correlated co-missingness", "impact": "Prevents artificial data imputation bias"},
+            {"assumption": "Missing markers = Not Yet Profiled", "rationale": "58.7% zero-behavioral-data rows with perfectly correlated co-missingness", "impact": "Prevents artificial data imputation bias"},
             {"assumption": "Ordinal sequence (L < M < H < VH)", "rationale": "Standard casino revenue and profit conventions", "impact": "Refining Gower distance metric without altering K-Modes match count"},
             {"assumption": "Geography Excluded from Clustering", "rationale": "Prevents clusters from defaulting to region rather than behavior", "impact": "Ensures behavior-led sales strategies"}
         ]
@@ -238,13 +248,13 @@ def generate_data():
         "accounts": accounts_list
     }
 
-    with open(r'e:\Data Science\Venture Insights\segmentation_dashboard_data.json', 'w', encoding='utf-8') as f:
+    with open(root_output, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2)
 
-    with open(r'e:\Data Science\Venture Insights\public\segmentation_dashboard_data.json', 'w', encoding='utf-8') as f:
+    with open(public_output, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2)
 
-    print(f"Successfully updated segmentation_dashboard_data.json with Results & Findings payload!")
+    print(f"Successfully generated payload from data/ to public/ for {len(accounts_list)} accounts!")
 
 if __name__ == '__main__':
     generate_data()

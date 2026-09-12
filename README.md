@@ -27,6 +27,8 @@ Venture Insights provides sales leaders, account managers, and marketing strateg
 
 ## 🔬 Data Science Methodology & Modeling
 
+> 📘 **Full Technical Documentation**: For complete mathematical formulas, algorithm benchmarks (K-Modes vs K-Means, DBSCAN, Hierarchical Clustering), Cramér's V proofs, and MCA/PCoA vs PCA derivations, see [METHODOLOGY_AND_WORKFLOW.md](METHODOLOGY_AND_WORKFLOW.md).
+
 ### 1. Data Cleaning & MNAR Missingness Discovery
 - **Reconciliation of Missing Markers**: Reconciled 3 distinct missing tokens (`'None'`, true `NaN`, and `'-'`) into a unified `NP` (Not Profiled) status.
 - **MNAR Missingness Pattern**: Proved that missingness across behavioral fields (`Revenue_Bucket`, `Profit_Bucket`, `Market_Share_Segment`) is **Missing Not At Random (MNAR)**. 1,778 accounts go missing together, representing unprofiled prospect accounts ("never transacted") rather than random data loss.

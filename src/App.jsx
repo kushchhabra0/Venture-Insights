@@ -37,7 +37,9 @@ export default function App() {
   const [classifierResult, setClassifierResult] = useState(null)
 
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + 'segmentation_dashboard_data.json')
+    const baseUrl = import.meta.env.BASE_URL || '/'
+    const jsonUrl = baseUrl.endsWith('/') ? `${baseUrl}segmentation_dashboard_data.json` : `${baseUrl}/segmentation_dashboard_data.json`
+    fetch(jsonUrl)
       .then(res => res.json())
       .then(json => {
         setData(json)

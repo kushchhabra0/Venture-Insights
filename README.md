@@ -1,9 +1,12 @@
 # Venture Insights — Customer Segmentation & Intelligence Platform
 
+[![Live Dashboard](https://img.shields.io/badge/Live%20Dashboard-GitHub%20Pages-2563EB?style=for-the-badge&logo=github&logoColor=white)](https://kushchhabra0.github.io/Venture-Insights/)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://python.org)
 [![K-Modes](https://img.shields.io/badge/Algorithm-K--Modes%20(K%3D5)-2563EB?style=flat)](https://github.com/nicodv/kmodes)
 [![React](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org)
 [![Validation](https://img.shields.io/badge/Audit-36--Point%20Framework%20PASSED-10B981?style=flat)](#36-point-solution-validation-audit-suite)
+
+> 🚀 **Live Web Application**: Explore the live customer intelligence dashboard at **[https://kushchhabra0.github.io/Venture-Insights/](https://kushchhabra0.github.io/Venture-Insights/)**
 
 An enterprise-grade customer intelligence platform built on a rigorous **K-Modes (K=5) categorical segmentation model** for **3,030 casino-machine accounts**. The repository combines advanced data science modeling, Gower distance metrics, structural validation, outlier sensitivity analysis, and an interactive light-theme executive intelligence dashboard.
 

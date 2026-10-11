@@ -27,7 +27,9 @@ Venture Insights provides sales leaders, account managers, and marketing strateg
 
 ## 🔬 Data Science Methodology & Modeling
 
-> 📘 **Full Technical Documentation**: For complete mathematical formulas, algorithm benchmarks (K-Modes vs K-Means, DBSCAN, Hierarchical Clustering), Cramér's V proofs, and MCA/PCoA vs PCA derivations, see [METHODOLOGY_AND_WORKFLOW.md](METHODOLOGY_AND_WORKFLOW.md).
+> 📘 **Technical & End-to-End Documentation**:
+> - 📄 **[END_TO_END_PROJECT_DOCUMENTATION.md](docs/END_TO_END_PROJECT_DOCUMENTATION.md)** — Exhaustive master guide covering business context, data ingestion, MNAR statistical proofs, algorithm benchmarking, dimension reduction, structural validation, outlier frameworks, playbooks, and production architecture.
+> - 📐 **[METHODOLOGY_AND_WORKFLOW.md](docs/METHODOLOGY_AND_WORKFLOW.md)** — Mathematical formulations, Cramér's V derivations, and Gower/ARI equations.
 
 ### 1. Data Cleaning & MNAR Missingness Discovery
 - **Reconciliation of Missing Markers**: Reconciled 3 distinct missing tokens (`'None'`, true `NaN`, and `'-'`) into a unified `NP` (Not Profiled) status.
@@ -94,6 +96,7 @@ Venture-Insights/
 ├── notebooks/                           # Jupyter Data Science Notebooks
 │   └── VentureInsights_Segmentation.ipynb # Main segmentation analysis notebook
 ├── docs/                                # Project documentation & management deliverables
+│   ├── END_TO_END_PROJECT_DOCUMENTATION.md # Comprehensive end-to-end technical guide
 │   ├── METHODOLOGY_AND_WORKFLOW.md      # Full mathematical & statistical methodology
 │   ├── VentureCreed_Segmentation_Management.xlsx # Management workbook
 │   └── VentureInsights_Segmentation_Deck.pptx    # Executive presentation deck

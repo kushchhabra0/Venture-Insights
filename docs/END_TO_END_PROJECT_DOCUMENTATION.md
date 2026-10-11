@@ -36,7 +36,6 @@
 11. [Data Pipeline & Full-Stack System Architecture](#11-data-pipeline--full-stack-system-architecture)
 12. [User Interface / User Experience Design Philosophy](#12-user-interface--user-experience-design-philosophy)
 13. [DevOps, Automated CI/CD & Cloud Deployment](#13-devops-automated-cicd--cloud-deployment)
-14. [Interview Talking Points & Project Defensibility Guide](#14-interview-talking-points--project-defensibility-guide)
 
 ---
 
@@ -766,21 +765,3 @@ A common issue with `actions/deploy-pages@v5` occurs when repository settings ar
 
 **The Fix:** We updated the pipeline to use `peaceiris/actions-gh-pages@v4`. This action compiles `./dist` and pushes it directly to the `gh-pages` branch, bypassing the GitHub Pages API timeout.
 
----
-
-## 14. Interview Talking Points & Project Defensibility Guide
-
-### Q1: Why did you choose K-Modes over K-Means?
-> *"All modeling attributes were categorical or ordinal (`Revenue_Bucket`, `Profit_Bucket`, `Market_Share`). K-Means relies on Euclidean distance and arithmetic means, which creates non-existent continuous values (e.g. mean of Low and High = 1.5). One-hot encoding creates sparse hypercube vertices where Euclidean distance collapses to the square root of the Hamming distance, compressing the metric space. K-Modes natively handles discrete categories by minimizing Simple Matching Dissimilarity and using mode centroids."*
-
-### Q2: How did you handle the 58.7% missing values?
-> *"Instead of default mode imputation, I ran a co-missingness correlation matrix. I found that missing values across Revenue, Profit, and Market Share were correlated at $\rho \approx 1.0$ (they went missing together on 1,778 accounts). This proved the data was Missing Not At Random (MNAR)—representing unprofiled prospective accounts that had never transacted. We explicitly retained `NP` as a valid category rather than corrupting the dataset with artificial imputation."*
-
-### Q3: Why didn't you use standard PCA for dimensionality reduction?
-> *"PCA assumes continuous, normally distributed variables and linear covariance matrices. Categorical data violates these linear variance assumptions. I used Multiple Correspondence Analysis (MCA) and Classical PCoA on Gower distances, which decompose the Chi-square ($\chi^2$) dissimilarity matrix to preserve categorical distances accurately in 2D space."*
-
-### Q4: How did you select features and prevent bias?
-> *"I used Cramér's V association matrices to detect redundancy. `Casino_Size_Segment` was dropped due to near-perfect correlation ($\mathcal{V} = 0.97$) with `Market_Potential_Segment`. Additionally, raw geography features were excluded from distance calculations ($\mathcal{V} \approx 0.50-0.76$) to prevent geography-dominated clusters, keeping geography as a post-hoc profiling overlay while retaining `Competitiveness_Flag` for sales defense strategy."*
-
-### Q5: What was the most honest technical finding in your project?
-> *"The full-population silhouette score ($0.60$) was inflated by the large split between active accounts and unprofiled prospects. Re-running K-Modes on the profiled-only subset yielded a silhouette between $0.21$ and $0.35$. This proved that `High-Potential Growth Champions` is a robust behavioral archetype, while the boundary between `Loyal Core` and `Under-Profiled Active` reflects data completeness rather than a hard behavioral barrier. We documented them to leadership as operational action tiers rather than distinct customer species."*
